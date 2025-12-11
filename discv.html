@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Творчество — The Weekend</title>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+      height: 100%;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-color: #121212; /* Темно-серый фон */
+      color: #F5F5F5; /* Белый цвет текста */
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      line-height: 1.8;
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+	 body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-color: #121212; /* Темно-серый фон, если вдруг картинка не загрузится */
+      color: #F5F5F5; /* Белый цвет текста */
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      line-height: 1.8;
+      transition: background-color 0.5s ease, color 0.5s ease;
+      
+      /* Устанавливаем фон с картинкой fonblue33.png */
+      background-image: url('fonblue33.png');
+      background-position: center center; /* Центрируем изображение */
+      background-size: cover; /* Растягиваем изображение, чтобы оно покрывало весь экран */
+      background-repeat: no-repeat; /* Убираем повторение */
+      background-attachment: fixed; /* Фиксируем фон, чтобы он не двигался при прокрутке */
+    }
+
+    body.light-theme {
+      background-color: #ffffff; /* Светлая тема */
+      color: #1a1a1a; /* Тёмный текст для светлой темы */
+    }
+
+    /* ======= МЕНЮ ======= */
+    .menu {
+      text-align: center;
+      margin: 40px 0 30px;
+      font-weight: bold;
+      animation: fadeIn 1s ease;
+    }
+
+    .menu a {
+      display: inline-block;
+      background-color: rgba(30, 144, 255, 0.15); /* Синий цвет */
+      color: #1E90FF; /* Синий цвет текста */
+      text-decoration: none;
+      padding: 10px 18px;
+      border: 1px solid #1E90FF; /* Синий цвет */
+      border-radius: 5px; /* Прямоугольные углы */
+      margin: 4px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 8px rgba(30, 144, 255, 0.2);
+    }
+
+    .menu a:hover {
+      background-color: #1E90FF;
+      color: #fff; /* Белый цвет текста при наведении */
+      box-shadow: 0 0 15px #1E90FF;
+      transform: translateY(-2px);
+      text-decoration: none;
+    }
+
+    .menu a.active {
+      background-color: #1E90FF;
+      color: #fff;
+      box-shadow: 0 0 15px #1E90FF;
+      cursor: default;
+    }
+
+    h1 {
+      text-align: center;
+      color: #1E90FF; /* Синий цвет заголовка */
+      text-shadow: 0 0 10px #1E90FF, 2px 2px 4px #000;
+      margin-bottom: 20px;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 8px #1E90FF, 2px 2px 4px #000; }
+      to { text-shadow: 0 0 20px #4682B4, 2px 2px 6px #000; }
+    }
+
+    .content {
+      flex: 1;
+      max-width: 1000px;
+      margin: 0 auto 50px;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(30, 144, 255, 0.25); /* Синий цвет */
+      animation: fadeInUp 1s ease;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    p {
+      font-size: 18px;
+    }
+
+    .quote {
+      background-color: rgba(255, 255, 255, 0.08);
+      border-left: 4px solid #1E90FF; /* Синий цвет */
+      padding: 15px 20px;
+      font-style: italic;
+      margin: 30px 0;
+      text-align: center;
+      font-size: 20px;
+    }
+
+    /* ======= ТАБЛИЦА ======= */
+    table {
+      width: 100%;
+      margin: 30px 0;
+      border-collapse: collapse;
+      text-align: left;
+      animation: fadeInUp 1s ease;
+    }
+
+    table th, table td {
+      padding: 12px 15px;
+      border: 1px solid #1E90FF;
+    }
+
+    table th {
+      background-color: #1E90FF;
+      color: white;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    table tr:nth-child(even) {
+      background-color: rgba(30, 144, 255, 0.1);
+    }
+
+    table tr:hover {
+      background-color: rgba(30, 144, 255, 0.3);
+    }
+
+    table td {
+      color: #F5F5F5;
+    }
+
+    hr {
+      border: none;
+      height: 1px;
+      background-color: #1E90FF; /* Синий цвет */
+      width: 60%;
+      margin: 30px auto;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="menu">
+    <a href="indexv.html">Главная</a>
+    <a href="Infov.html">Общая информация</a>
+    <a href="Historyv.html">История</a>
+    <a href="Filmv.html">Фильмография</a>
+    <a href="Discv.html" class="active">Дискография</a>
+    <a href="Linksv.html">Источники</a>
+    <a href="Shopv.html">Заказать</a>
+    <a href="Contactv.html">Контакты</a>
+  </div>
+
+  <div class="content">
+    <h1>Творчество The Weeknd</h1>
+    <p>The Weeknd (Абель Мактунган) — один из самых влиятельных исполнителей современности. В этом разделе мы расскажем о его основных альбомах и значимых работах, которые сформировали его уникальный стиль.</p>
+
+    <h2>Основные альбомы и релизы</h2>
+    
+    <table>
+      <thead>
+        <tr>
+          <th>Год</th>
+          <th>Альбом</th>
+          <th>Синглы</th>
+          <th>Особенности</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2011</td>
+          <td>House of Balloons</td>
+          <td>"Wicked Games", "The Morning"</td>
+          <td>Дебютный микстейп, который произвел фурор в музыкальной индустрии.</td>
+        </tr>
+        <tr>
+          <td>2012</td>
+          <td>Trilogy</td>
+          <td>"High for This", "The Knowing"</td>
+          <td>Сборник из ранее выпущенных микстейпов, ставший настоящим прорывом.</td>
+        </tr>
+        <tr>
+          <td>2015</td>
+          <td>Beauty Behind the Madness</td>
+          <td>"Can't Feel My Face", "The Hills"</td>
+          <td>Коммерчески успешный альбом, который принес ему мировую славу.</td>
+        </tr>
+        <tr>
+          <td>2016</td>
+          <td>Starboy</td>
+          <td>"Starboy", "I Feel It Coming"</td>
+          <td>Коллаборации с Daft Punk, новый стиль и звучание.</td>
+        </tr>
+        <tr>
+          <td>2018</td>
+          <td>My Dear Melancholy</td>
+          <td>"Call Out My Name", "Try Me"</td>
+          <td>Личностный и эмоциональный альбом, вдохновленный личными переживаниями.</td>
+        </tr>
+        <tr>
+          <td>2020</td>
+          <td>After Hours</td>
+          <td>"Blinding Lights", "Heartless"</td>
+          <td>Успешный альбом с элементами ретро и синти-попа.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="quote">«Каждый альбом The Weeknd — это шаг в новый музыкальный мир, наполненный уникальной атмосферой.»</div>
+
+    <h2>Влияние и стиль</h2>
+    <p>Стиль The Weeknd невозможно спутать с другими артистами. Он сочетает элементы R&B, поп-музыки, электроники и инди-рока. Его музыка часто носит мрачный и меланхоличный характер, в текстах можно встретить темы любви, одиночества и личных переживаний. Влияние 80-х годов заметно в его последнем альбоме "After Hours", который включает элементы синти-попа и ретро-звучания.</p>
+  </div>
+
+  
+</body>
+</html>

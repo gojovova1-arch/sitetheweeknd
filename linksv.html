@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Источники — The Weekend</title>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+      height: 100%;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-color: #121212; /* Темно-серый фон */
+      color: #F5F5F5; /* Белый цвет текста */
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      line-height: 1.8;
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+	 body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-color: #121212; /* Темно-серый фон, если вдруг картинка не загрузится */
+      color: #F5F5F5; /* Белый цвет текста */
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      line-height: 1.8;
+      transition: background-color 0.5s ease, color 0.5s ease;
+      
+      /* Устанавливаем фон с картинкой fonblue33.png */
+      background-image: url('fonblue33.png');
+      background-position: center center; /* Центрируем изображение */
+      background-size: cover; /* Растягиваем изображение, чтобы оно покрывало весь экран */
+      background-repeat: no-repeat; /* Убираем повторение */
+      background-attachment: fixed; /* Фиксируем фон, чтобы он не двигался при прокрутке */
+    }
+
+    body.light-theme {
+      background-color: #ffffff; /* Светлая тема */
+      color: #1a1a1a; /* Тёмный текст для светлой темы */
+    }
+
+    /* ======= МЕНЮ ======= */
+    .menu {
+      text-align: center;
+      margin: 40px 0 30px;
+      font-weight: bold;
+      animation: fadeIn 1s ease;
+    }
+
+    .menu a {
+      display: inline-block;
+      background-color: rgba(30, 144, 255, 0.15); /* Синий цвет */
+      color: #1E90FF; /* Синий цвет текста */
+      text-decoration: none;
+      padding: 10px 18px;
+      border: 1px solid #1E90FF; /* Синий цвет */
+      border-radius: 5px; /* Прямоугольные углы */
+      margin: 4px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 8px rgba(30, 144, 255, 0.2);
+    }
+
+    .menu a:hover {
+      background-color: #1E90FF;
+      color: #fff; /* Белый цвет текста при наведении */
+      box-shadow: 0 0 15px #1E90FF;
+      transform: translateY(-2px);
+      text-decoration: none;
+    }
+
+    .menu a.active {
+      background-color: #1E90FF;
+      color: #fff;
+      box-shadow: 0 0 15px #1E90FF;
+      cursor: default;
+    }
+
+    h1 {
+      text-align: center;
+      color: #1E90FF; /* Синий цвет заголовка */
+      text-shadow: 0 0 10px #1E90FF, 2px 2px 4px #000;
+      margin-bottom: 20px;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 8px #1E90FF, 2px 2px 4px #000; }
+      to { text-shadow: 0 0 20px #4682B4, 2px 2px 6px #000; }
+    }
+
+    .content {
+      flex: 1;
+      max-width: 1000px;
+      margin: 0 auto 50px;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(30, 144, 255, 0.25); /* Синий цвет */
+      animation: fadeInUp 1s ease;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    p {
+      font-size: 18px;
+    }
+
+    .quote {
+      background-color: rgba(255, 255, 255, 0.08);
+      border-left: 4px solid #1E90FF; /* Синий цвет */
+      padding: 15px 20px;
+      font-style: italic;
+      margin: 30px 0;
+      text-align: center;
+      font-size: 20px;
+    }
+
+    .resource-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .resource-list li {
+      background-color: rgba(30, 144, 255, 0.1);
+      margin: 10px 0;
+      padding: 15px;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    .resource-list li:hover {
+      background-color: rgba(30, 144, 255, 0.3);
+    }
+
+    .resource-list a {
+      color: #1E90FF;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .resource-list a:hover {
+      color: #fff;
+    }
+
+    hr {
+      border: none;
+      height: 1px;
+      background-color: #1E90FF; /* Синий цвет */
+      width: 60%;
+      margin: 30px auto;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="menu">
+    <a href="indexv.html">Главная</a>
+    <a href="Infov.html">Общая информация</a>
+    <a href="Historyv.html">История</a>
+    <a href="Filmv.html">Фильмография</a>
+    <a href="Discv.html">Дискография</a>
+    <a href="Linksv.html" class="active">Источники</a>
+    <a href="Shopv.html">Заказать</a>
+    <a href="Contactv.html">Контакты</a>
+  </div>
+
+  <div class="content">
+    <h1>Источники о The Weeknd</h1>
+    <p>На этой странице представлены ссылки на различные ресурсы, где вы можете узнать больше о The Weeknd. Читайте интервью, статьи, новости и многое другое, чтобы быть в курсе всего, что касается этого выдающегося артиста.</p>
+
+    <h2>Ресурсы о The Weeknd</h2>
+    
+    <ul class="resource-list">
+      <li>
+        <a href="https://www.theweeknd.com/" target="_blank">Официальный сайт The Weeknd</a>
+        <p>Посетите официальный сайт The Weeknd для получения актуальных новостей, туров, релизов и многого другого.</p>
+      </li>
+      <li>
+        <a href="https://www.allmusic.com/artist/the-weeknd-mn0002815200" target="_blank">AllMusic — The Weeknd</a>
+        <p>Всеобъемлющий профиль артиста с подробной информацией о его альбомах, биографии и карьере.</p>
+      </li>
+      <li>
+        <a href="https://www.billboard.com/artist/the-weeknd/" target="_blank">Billboard — The Weeknd</a>
+        <p>Новости, чарты, интервью и другие материалы о The Weeknd на Billboard.</p>
+      </li>
+      <li>
+        <a href="https://www.rollingstone.com/music/music-news/the-weeknd-interview-2021-1115159/" target="_blank">Rolling Stone — Интервью с The Weeknd</a>
+        <p>Прочитайте эксклюзивные интервью с The Weeknd, где он рассказывает о своем творчестве и жизни.</p>
+      </li>
+      <li>
+        <a href="https://www.nme.com/artists/the-weeknd" target="_blank">NME — The Weeknd</a>
+        <p>Последние новости, рецензии и статьи о The Weeknd от NME.</p>
+      </li>
+      <li>
+        <a href="https://www.youtube.com/channel/UC0WP5P-ufpRfjbNrmOWwLBQ" target="_blank">Официальный канал The Weeknd на YouTube</a>
+        <p>Просматривайте официальные видео, клипы и эксклюзивные материалы от The Weeknd на его YouTube-канале.</p>
+      </li>
+      <li>
+        <a href="https://www.instagram.com/theweeknd/" target="_blank">Instagram — The Weeknd</a>
+        <p>Подписывайтесь на Instagram The Weeknd для получения самых свежих обновлений о его жизни и карьере.</p>
+      </li>
+    </ul>
+
+    <div class="quote">«Чтение о The Weeknd помогает понять, как его музыка развивается, и познакомиться с его личной историей.»</div>
+  </div>
+</body>
+</html>

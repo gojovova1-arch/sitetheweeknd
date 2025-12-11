@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Главная — The Weekend</title>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+      height: 100%;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-color: #121212; /* Темно-серый фон, если вдруг картинка не загрузится */
+      color: #F5F5F5; /* Белый цвет текста */
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      line-height: 1.8;
+      transition: background-color 0.5s ease, color 0.5s ease;
+      
+      /* Устанавливаем фон с картинкой fonblue33.png */
+      background-image: url('fonblue33.png');
+      background-position: center center; /* Центрируем изображение */
+      background-size: cover; /* Растягиваем изображение, чтобы оно покрывало весь экран */
+      background-repeat: no-repeat; /* Убираем повторение */
+      background-attachment: fixed; /* Фиксируем фон, чтобы он не двигался при прокрутке */
+    }
+
+    body.light-theme {
+      background-color: #ffffff; /* Светлая тема */
+      color: #1a1a1a; /* Тёмный текст для светлой темы */
+    }
+
+    /* ======= МЕНЮ ======= */
+    .menu {
+      text-align: center;
+      margin: 40px 0 30px;
+      font-weight: bold;
+      animation: fadeIn 1s ease;
+    }
+
+    .menu a {
+      display: inline-block;
+      background-color: rgba(30, 144, 255, 0.15); /* Синий цвет */
+      color: #1E90FF; /* Синий цвет текста */
+      text-decoration: none;
+      padding: 10px 18px;
+      border: 1px solid #1E90FF; /* Синий цвет */
+      border-radius: 5px; /* Прямоугольные углы */
+      margin: 4px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 8px rgba(30, 144, 255, 0.2);
+    }
+
+    .menu a:hover {
+      background-color: #1E90FF;
+      color: #fff; /* Белый цвет текста при наведении */
+      box-shadow: 0 0 15px #1E90FF;
+      transform: translateY(-2px);
+      text-decoration: none;
+    }
+
+    .menu a.active {
+      background-color: #1E90FF;
+      color: #fff;
+      box-shadow: 0 0 15px #1E90FF;
+      cursor: default;
+    }
+
+    h1 {
+      text-align: center;
+      color: #1E90FF; /* Синий цвет заголовка */
+      text-shadow: 0 0 10px #1E90FF, 2px 2px 4px #000;
+      margin-bottom: 20px;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 8px #1E90FF, 2px 2px 4px #000; }
+      to { text-shadow: 0 0 20px #4682B4, 2px 2px 6px #000; }
+    }
+
+    .content {
+      flex: 1;
+      max-width: 1000px;
+      margin: 0 auto 50px;
+      background-color: rgba(0, 0, 0, 0.7); /* Темный фон для контента */
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(30, 144, 255, 0.25); /* Синий цвет */
+      animation: fadeInUp 1s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    p {
+      font-size: 18px;
+    }
+
+    .quote {
+      background-color: rgba(255, 255, 255, 0.08);
+      border-left: 4px solid #1E90FF; /* Синий цвет */
+      padding: 15px 20px;
+      font-style: italic;
+      margin: 30px 0;
+      text-align: center;
+      font-size: 20px;
+    }
+
+    .image-block {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .image-block img {
+      width: 80%;
+      max-width: 650px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(30, 144, 255, 0.3);
+      transition: transform 0.4s ease;
+    }
+
+    .image-block img:hover {
+      transform: scale(1.05);
+    }
+
+    hr {
+      border: none;
+      height: 1px;
+      background-color: #1E90FF; /* Синий цвет */
+      width: 60%;
+      margin: 30px auto;
+    }
+
+
+    /* ======= МОДАЛЬНОЕ ОКНО ======= */
+    .contact-modal {
+      display: none;
+      position: fixed;
+      z-index: 150;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      animation: fadeIn 0.5s ease;
+    }
+
+    .contact-content {
+      background: rgba(20, 20, 20, 0.95);
+      color: #1E90FF; /* Синий цвет */
+      margin: 10% auto;
+      padding: 30px 50px;
+      border-radius: 15px;
+      width: 400px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(30, 144, 255, 0.4); /* Синий цвет */
+      animation: zoomIn 0.4s ease;
+    }
+
+    .close-contact {
+      float: right;
+      font-size: 28px;
+      cursor: pointer;
+      color: #1E90FF; /* Синий цвет */
+      transition: 0.3s;
+    }
+
+    .close-contact:hover { color: white; }
+
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes zoomIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+  </style>
+</head>
+
+<body>
+  <div class="menu">
+    <a href="indexv.html" class="active">Главная</a>
+    <a href="Infov.html">Общая информация</a>
+    <a href="Historyv.html">История</a>
+    <a href="Filmv.html">Фильмография</a>
+    <a href="Discv.html">Дискография</a>
+    <a href="Linksv.html">Источники</a>
+    <a href="Shopv.html">Заказать</a>
+    <a href="Contactv.html">Контакты</a>
+  </div>
+
+  <div class="content">
+    <h1>The Weeknd</h1>
+    <p><strong>The Weeknd</strong> — один из самых популярных современных исполнителей, чья музыка сочетает элементы попа, R&B и электроники. Его стиль и меланхоличная атмосфера покорили миллионы поклонников по всему миру, а тексты часто затрагивают темы любви, одиночества и внутреннего конфликта.</p>
+    <p>На этом сайте вы сможете узнать о творчестве The Weekend, послушать его хиты, а также ознакомиться с фильмами, клипами и альбомами.</p>
+
+    <div class="quote">«Музыка The Weeknd — это путешествие в мир эмоций, которые невозможно выразить словами.»</div>
+
+    <h2>Об артисте</h2>
+    <p>The Weeknd, настоящее имя Абель Мактунган, родился 16 февраля 1990 года в Торонто, Канада. В возрасте 17 лет он начал выкладывать свои песни на YouTube, что стало началом его карьеры. С 2010 года он начал записывать и выпускать свою музыку, став одним из самых успешных исполнителей в мире.</p>
+    
+    <p>Его дебютный альбом, "House of Balloons" (2011), стал настоящим прорывом и привлек внимание к его уникальному стилю, который сочетает элементы R&B, попа и инди-рока. The Weeknd быстро заработал репутацию за счет своей способности смешивать жанры и создавать мрачные, но мелодичные треки.</p>
+    
+    <h2>Дискография</h2>
+    <ul>
+      <li><strong>2012:</strong> "Trilogy" – Сборник песен с дебютного альбома</li>
+      <li><strong>2015:</strong> "Beauty Behind the Madness" – Альбом, включающий супер-хит "Can't Feel My Face".</li>
+      <li><strong>2016:</strong> "Starboy" – Заглавная песня с участием Daft Punk принесла ему ещё большую популярность.</li>
+      <li><strong>2018:</strong> "My Dear Melancholy" – Вдохновленный личными переживаниями.</li>
+      <li><strong>2020:</strong> "After Hours" – Включает хиты "Blinding Lights" и "Heartless".</li>
+    </ul>
+
+    <h2>The Weeknd сегодня</h2>
+    <p>Каждый новый релиз The Weekend вызывает огромный интерес среди поклонников и критиков. Его музыка не теряет своей актуальности, а количество фан-клубов и трибьют-групп растёт по всему миру. Его песни становятся настоящими хитами, а концертные туры привлекают тысячи поклонников со всего мира.</p>
+  </div>
+
+</body>
+</html>
+
+

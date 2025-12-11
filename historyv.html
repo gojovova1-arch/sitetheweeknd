@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head> 
+  <meta charset="UTF-8">
+  <title>История — The Weekend</title>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+      height: 100%;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-color: #121212; /* Темно-серый фон */
+      color: #F5F5F5; /* Белый цвет текста */
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      line-height: 1.8;
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+	
+	 body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-color: #121212; /* Темно-серый фон, если вдруг картинка не загрузится */
+      color: #F5F5F5; /* Белый цвет текста */
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      line-height: 1.8;
+      transition: background-color 0.5s ease, color 0.5s ease;
+      
+      /* Устанавливаем фон с картинкой fonblue33.png */
+      background-image: url('fonblue33.png');
+      background-position: center center; /* Центрируем изображение */
+      background-size: cover; /* Растягиваем изображение, чтобы оно покрывало весь экран */
+      background-repeat: no-repeat; /* Убираем повторение */
+      background-attachment: fixed; /* Фиксируем фон, чтобы он не двигался при прокрутке */
+    }
+
+    body.light-theme {
+      background-color: #ffffff; /* Светлая тема */
+      color: #1a1a1a; /* Тёмный текст для светлой темы */
+    }
+
+    /* ======= МЕНЮ ======= */
+    .menu {
+      text-align: center;
+      margin: 40px 0 30px;
+      font-weight: bold;
+      animation: fadeIn 1s ease;
+    }
+
+    .menu a {
+      display: inline-block;
+      background-color: rgba(30, 144, 255, 0.15); /* Синий цвет */
+      color: #1E90FF; /* Синий цвет текста */
+      text-decoration: none;
+      padding: 10px 18px;
+      border: 1px solid #1E90FF; /* Синий цвет */
+      border-radius: 5px; /* Прямоугольные углы */
+      margin: 4px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 8px rgba(30, 144, 255, 0.2);
+    }
+
+    .menu a:hover {
+      background-color: #1E90FF;
+      color: #fff; /* Белый цвет текста при наведении */
+      box-shadow: 0 0 15px #1E90FF;
+      transform: translateY(-2px);
+      text-decoration: none;
+    }
+
+    .menu a.active {
+      background-color: #1E90FF;
+      color: #fff;
+      box-shadow: 0 0 15px #1E90FF;
+      cursor: default;
+    }
+
+    h1 {
+      text-align: center;
+      color: #1E90FF; /* Синий цвет заголовка */
+      text-shadow: 0 0 10px #1E90FF, 2px 2px 4px #000;
+      margin-bottom: 20px;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 8px #1E90FF, 2px 2px 4px #000; }
+      to { text-shadow: 0 0 20px #4682B4, 2px 2px 6px #000; }
+    }
+
+    .content {
+      flex: 1;
+      max-width: 1000px;
+      margin: 0 auto 50px;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(30, 144, 255, 0.25); /* Синий цвет */
+      animation: fadeInUp 1s ease;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    p {
+      font-size: 18px;
+    }
+
+    .quote {
+      background-color: rgba(255, 255, 255, 0.08);
+      border-left: 4px solid #1E90FF; /* Синий цвет */
+      padding: 15px 20px;
+      font-style: italic;
+      margin: 30px 0;
+      text-align: center;
+      font-size: 20px;
+    }
+
+    .image-block {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .image-block img {
+      width: 80%;
+      max-width: 650px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(30, 144, 255, 0.3);
+      transition: transform 0.4s ease;
+    }
+
+    .image-block img:hover {
+      transform: scale(1.05);
+    }
+
+    hr {
+      border: none;
+      height: 1px;
+      background-color: #1E90FF; /* Синий цвет */
+      width: 60%;
+      margin: 30px auto;
+    }
+
+    /* ======= МОДАЛЬНОЕ ОКНО ======= */
+    .contact-modal {
+      display: none;
+      position: fixed;
+      z-index: 150;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      animation: fadeIn 0.5s ease;
+    }
+
+    .contact-content {
+      background: rgba(20, 20, 20, 0.95);
+      color: #1E90FF; /* Синий цвет */
+      margin: 10% auto;
+      padding: 30px 50px;
+      border-radius: 15px;
+      width: 400px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(30, 144, 255, 0.4); /* Синий цвет */
+      animation: zoomIn 0.4s ease;
+    }
+
+    .close-contact {
+      float: right;
+      font-size: 28px;
+      cursor: pointer;
+      color: #1E90FF; /* Синий цвет */
+      transition: 0.3s;
+    }
+
+    .close-contact:hover { color: white; }
+
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes zoomIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+  </style>
+</head>
+
+<body>
+  <div class="menu">
+    <a href="indexv.html">Главная</a>
+    <a href="Infov.html">Общая информация</a>
+    <a href="Historyv.html" class="active">История</a>
+    <a href="Filmv.html">Фильмография</a>
+    <a href="Discv.html">Дискография</a>
+    <a href="Linksv.html">Источники</a>
+    <a href="Shopv.html">Заказать</a>
+    <a href="Contactv.html">Контакты</a>
+  </div>
+
+  <div class="content">
+    <h1>История The Weeknd</h1>
+    <p><strong>The Weeknd</strong> — канадский певец, автор песен и продюсер, чья музыкальная карьера началась в 2010 году, когда он начал выкладывать свои песни в интернете. В этом разделе мы рассмотрим основные этапы его пути к мировой славе.</p>
+    
+    <h2>Начало карьеры</h2>
+    <p>Абель Мактунган, более известный как The Weeknd, родился в Торонто, Канада, в 1990 году. В 17 лет он начал публиковать свои песни в YouTube, что привлекло внимание к его таланту. В 2010 году он выпустил серию микстейпов, которые мгновенно привлекли внимание музыкальных критиков и поклонников.</p>
+    
+    <h2>Прорыв и успех</h2>
+    <p>С 2011 года The Weeknd продолжил набирать популярность, выпустив три ключевых микстейпа: "House of Balloons", "Thursday" и "Echoes of Silence". Эти работы были высоко оценены за их уникальный стиль, сочетающий R&B, поп и инди-рок.</p>
+
+    <h2>Дебютный альбом</h2>
+    <p>В 2012 году The Weeknd выпустил свой первый сборник "Trilogy", который включал треки с микстейпов и несколько новых песен. Этот альбом принес ему коммерческий успех и закрепил за ним репутацию одного из самых ярких молодых артистов в музыкальной индустрии.</p>
+
+    <h2>Мировое признание</h2>
+    <p>В 2015 году альбом "Beauty Behind the Madness", который включал всемирно известный хит "Can't Feel My Face", вывел The Weeknd на международный уровень. Его песни начали звучать на радио по всему миру, а его творчество стало ассоциироваться с новым звуком, который сочетал поп, R&B и электронную музыку.</p>
+    
+    <div class="quote">«The Weeknd постоянно разрушает жанровые границы, оставаясь при этом верным своему уникальному стилю.»</div>
+
+    <h2>Будущее</h2>
+    <p>Сегодня The Weeknd продолжает вдохновлять миллионы поклонников по всему миру. Он не только выпускает хиты, но и активно занимается благотворительностью и занимается продюсированием. Его музыка продолжает развиваться, и будущее выглядит светлым для этого выдающегося артиста.</p>
+  </div>
+
+  <script>
+    // 🌙 Переключение темы
+    const themeToggle = document.getElementById("themeToggle");
+    themeToggle.addEventListener("click", () => {
+      document.body.classList.toggle("light-theme");
+      themeToggle.textContent = document.body.classList.contains("light-theme") ? "☀️" : "🌙";
+    });
+
+    // 📩 Контактное окно
+    const contactBtn = document.getElementById("contactBtn");
+    const contactModal = document.getElementById("contactModal");
+    const closeContact = document.querySelector(".close-contact");
+
+    contactBtn.onclick = () => contactModal.style.display = "block";
+    closeContact.onclick = () => contactModal.style.display = "none";
+    window.onclick = (e) => { if (e.target === contactModal) contactModal.style.display = "none"; };
+  </script>
+</body>
+</html>

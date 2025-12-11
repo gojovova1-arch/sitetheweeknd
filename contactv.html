@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Контакты — The Weeknd</title>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+      height: 100%;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-color: #121212; /* Темно-серый фон */
+      color: #F5F5F5; /* Белый цвет текста */
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      line-height: 1.8;
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+	 body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-color: #121212; /* Темно-серый фон, если вдруг картинка не загрузится */
+      color: #F5F5F5; /* Белый цвет текста */
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      line-height: 1.8;
+      transition: background-color 0.5s ease, color 0.5s ease;
+      
+      /* Устанавливаем фон с картинкой fonblue33.png */
+      background-image: url('fonblue33.png');
+      background-position: center center; /* Центрируем изображение */
+      background-size: cover; /* Растягиваем изображение, чтобы оно покрывало весь экран */
+      background-repeat: no-repeat; /* Убираем повторение */
+      background-attachment: fixed; /* Фиксируем фон, чтобы он не двигался при прокрутке */
+    }
+
+    body.light-theme {
+      background-color: #ffffff; /* Светлая тема */
+      color: #1a1a1a; /* Тёмный текст для светлой темы */
+    }
+
+    /* ======= МЕНЮ ======= */
+    .menu {
+      text-align: center;
+      margin: 40px 0 30px;
+      font-weight: bold;
+      animation: fadeIn 1s ease;
+    }
+
+    .menu a {
+      display: inline-block;
+      background-color: rgba(30, 144, 255, 0.15); /* Синий цвет */
+      color: #1E90FF; /* Синий цвет текста */
+      text-decoration: none;
+      padding: 10px 18px;
+      border: 1px solid #1E90FF; /* Синий цвет */
+      border-radius: 5px; /* Прямоугольные углы */
+      margin: 4px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 8px rgba(30, 144, 255, 0.2);
+    }
+
+    .menu a:hover {
+      background-color: #1E90FF;
+      color: #fff; /* Белый цвет текста при наведении */
+      box-shadow: 0 0 15px #1E90FF;
+      transform: translateY(-2px);
+      text-decoration: none;
+    }
+
+    .menu a.active {
+      background-color: #1E90FF;
+      color: #fff;
+      box-shadow: 0 0 15px #1E90FF;
+      cursor: default;
+    }
+
+    h1 {
+      text-align: center;
+      color: #1E90FF; /* Синий цвет заголовка */
+      text-shadow: 0 0 10px #1E90FF, 2px 2px 4px #000;
+      margin-bottom: 20px;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 8px #1E90FF, 2px 2px 4px #000; }
+      to { text-shadow: 0 0 20px #4682B4, 2px 2px 6px #000; }
+    }
+
+    .content {
+      flex: 1;
+      max-width: 1000px;
+      margin: 0 auto 50px;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(30, 144, 255, 0.25); /* Синий цвет */
+      animation: fadeInUp 1s ease;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    p {
+      font-size: 18px;
+    }
+
+    .contact-info {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .contact-info h2 {
+      font-size: 2rem;
+      color: #1E90FF;
+      margin-bottom: 15px;
+    }
+
+    .contact-info p {
+      font-size: 1.2rem;
+      color: #F5F5F5;
+    }
+
+    .contact-info .contact-item {
+      margin: 10px 0;
+      font-size: 1.2rem;
+      color: #bbb;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .contact-info .contact-item i {
+      font-size: 1.5rem;
+      color: #1E90FF;
+    }
+
+    .social-links {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .social-links a {
+      color: #1E90FF;
+      font-size: 1.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: #4682B4;
+    }
+
+    hr {
+      border: none;
+      height: 1px;
+      background-color: #1E90FF; /* Синий цвет */
+      width: 60%;
+      margin: 30px auto;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="menu">
+    <a href="indexv.html">Главная</a>
+    <a href="Infov.html">Общая информация</a>
+    <a href="Historyv.html">История</a>
+    <a href="Filmv.html">Фильмография</a>
+    <a href="Discv.html">Дискография</a>
+    <a href="Linksv.html">Источники</a>
+    <a href="Shopv.html">Заказать</a>
+    <a href="Contactv.html" class="active">Контакты</a>
+  </div>
+
+  <div class="content">
+    <h1>Контактная информация</h1>
+    <p>Если у вас есть вопросы или предложения, не стесняйтесь связаться с нами! Мы всегда рады услышать ваши отзывы и предложения.</p>
+
+    <div class="contact-info">
+      <h2>Контактные данные</h2>
+      <div class="contact-item">
+        <i class="fas fa-envelope"></i>
+        <p>Почта: vladimirpresedent2024@gmail.com</p>
+      </div>
+
+      <div class="contact-item">
+        <i class="fas fa-phone-alt"></i>
+        <p>Номер: +7(937) 465-52-48</p>
+      </div>
+
+      <div class="contact-item">
+        <i class="fas fa-map-marker-alt"></i>
+        <p>Москва, Россия</p>
+      </div>
+
+      <div class="contact-item">
+        <i class="fab fa-telegram"></i>
+        <a href="https://t.me/vovaackerman" target="_blank">Телеграм: @vovaackerman</a>
+      </div>
+
+      <div class="social-links">
+        <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+      </div>
+    </div>
+
+    <hr>
+
+    <p>Мы постараемся ответить вам в кратчайшие сроки и будем рады любому общению!</p>
+  </div>
+
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
+</html>
+
